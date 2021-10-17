@@ -115,4 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "$HOME/.cargo/env"
+
+if [ -e "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi

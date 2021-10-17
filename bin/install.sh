@@ -77,17 +77,25 @@ create_link()
 	fi
 }
 
+section()
+{
+	echo -e "\n\n\n*********** $1 ***********\n"
+}
 
 ########## END OF FUNCTIONS ########## 
 
-# operating system packages
+section "Updating operating system list of packages and installing tools"
 sudo apt-get update
 sudo apt-get install -y lm-sensors cpufrequtils git
 ok_or $? "Not all the packages were installed"
 
-# checkout repository
-#GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
+
+section "Configuring git global username and email"
+git config --global user.email "david-lorenzo@github.com"
+git config --global user.name "david-lorenzo"
+
 GIT_REPO="git@github.com:david-lorenzo/.dotfiles.git"
+section "Checking out: $GIT_REPO"
 if [ ! -e ~/.dotfiles ]; then
 	cd ~
 	git clone --recurse-submodules $GIT_REPO
@@ -100,6 +108,7 @@ create_link ~/bin ~/.dotfiles/bin
 # configuring bash
 create_link ~/.bashrc         ~/.dotfiles/.bashrc
 create_link ~/.bash_aliases   ~/.dotfiles/.bash_aliases
+create_link ~/.profile   ~/.dotfiles/.profile
 
 # configuring vim
 sudo apt-get install -y vim
