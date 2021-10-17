@@ -68,7 +68,11 @@ create_link()
 	fi
 }
 
+########## END OF FUNCTIONS ########## 
+
+# operating system packages
 sudo apt-get update
+sudo apt-get install -y lm-sensors cpufrequtils
 
 # checkout repository
 GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
@@ -80,6 +84,11 @@ if [ ! -e ~/.dotfiles ]; then
 		fatal "Could not clone git repository: ${GIT_REPO}"
 	fi
 fi
+
+
+# configuring bash
+create_link ~/.bashrc         ~/.dotfiles/.bashrc
+create_link ~/.bash_aliases   ~/.dotfiles/.bash_aliases
 
 # configuring vim
 sudo apt-get install -y vim
