@@ -93,6 +93,8 @@ if [ ! -e ~/.dotfiles ]; then
 	ok_or $? "Could not clone git repository: ${GIT_REPO}"
 fi
 
+# configuring bin folder
+create_link ~/bin ~.dotfiles/bin
 
 # configuring bash
 create_link ~/.bashrc         ~/.dotfiles/.bashrc
