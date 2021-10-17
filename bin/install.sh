@@ -82,7 +82,7 @@ section()
 	echo -e "\n\n\n*********** $1 ***********\n"
 }
 
-########## END OF FUNCTIONS ########## 
+########## END OF FUNCTIONS ##########
 
 section "Updating operating system list of packages and installing tools"
 sudo apt-get update
@@ -93,6 +93,7 @@ ok_or $? "Not all the packages were installed"
 section "Configuring git global username and email"
 git config --global user.email "david-lorenzo@github.com"
 git config --global user.name "david-lorenzo"
+git config --global core.editor "vim"
 
 GIT_REPO="git@github.com:david-lorenzo/.dotfiles.git"
 section "Checking out: $GIT_REPO"
