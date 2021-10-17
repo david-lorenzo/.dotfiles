@@ -102,15 +102,15 @@ if [ ! -e ~/.dotfiles ]; then
 	ok_or $? "Could not clone git repository: ${GIT_REPO}"
 fi
 
-# configuring bin folder
+section "Configuring bin folder"
 create_link ~/bin ~/.dotfiles/bin
 
-# configuring bash
+section "Configuring bash"
 create_link ~/.bashrc         ~/.dotfiles/.bashrc
 create_link ~/.bash_aliases   ~/.dotfiles/.bash_aliases
 create_link ~/.profile   ~/.dotfiles/.profile
 
-# configuring vim
+section "Configuring vim"
 sudo apt-get install -y vim
 create_link ~/.vim     ~/.dotfiles/.vim
 create_link ~/.vimrc   ~/.dotfiles/.vimrc
