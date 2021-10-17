@@ -86,7 +86,8 @@ sudo apt-get install -y lm-sensors cpufrequtils git
 ok_or $? "Not all the packages were installed"
 
 # checkout repository
-GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
+#GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
+GIT_REPO="git@github.com:david-lorenzo/.dotfiles.git"
 if [ ! -e ~/.dotfiles ]; then
 	cd ~
 	git clone --recurse-submodules $GIT_REPO
@@ -94,7 +95,7 @@ if [ ! -e ~/.dotfiles ]; then
 fi
 
 # configuring bin folder
-create_link ~/bin ~.dotfiles/bin
+create_link ~/bin ~/.dotfiles/bin
 
 # configuring bash
 create_link ~/.bashrc         ~/.dotfiles/.bashrc
