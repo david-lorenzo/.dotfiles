@@ -27,6 +27,15 @@ fatal()
 	exit 1
 }
 
+ok_or()
+{
+	result=$1
+	msg=$2
+	if [ $result -ne 0 ]; then
+		fatal "$2"
+	fi
+}
+
 create_link()
 {
 	symlink=`realpath -s $1`
@@ -68,21 +77,20 @@ create_link()
 	fi
 }
 
+
 ########## END OF FUNCTIONS ########## 
 
 # operating system packages
 sudo apt-get update
-sudo apt-get install -y lm-sensors cpufrequtils
+sudo apt-get install -y lm-sensors cpufrequtils git
+ok_or $? "Not all the packages were installed"
 
 # checkout repository
 GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
 if [ ! -e ~/.dotfiles ]; then
-	sudo apt-get install -y git
 	cd ~
 	git clone --recurse-submodules $GIT_REPO
-	if [ $? -ne 0 ]; then
-		fatal "Could not clone git repository: ${GIT_REPO}"
-	fi
+	ok_or $? "Could not clone git repository: ${GIT_REPO}"
 fi
 
 
