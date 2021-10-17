@@ -21,6 +21,12 @@ error()
 	msg "ERROR   - $1"
 }
 
+fatal()
+{
+	msg "FATAL   - $1"
+	exit 1
+}
+
 create_link()
 {
 	symlink=`realpath -s $1`
@@ -62,13 +68,20 @@ create_link()
 	fi
 }
 
+sudo apt-get update
+
 # checkout repository
-aptitude update
-aptitude install git
-cd ~
-git clone --recurse-submodules git@github.com:david-lorenzo/.dotfiles.git
+GIT_REPO="https://github.com/david-lorenzo/.dotfiles.git"
+if [ ! -e ~/.dotfiles ]; then
+	sudo apt-get install -y git
+	cd ~
+	git clone --recurse-submodules $GIT_REPO
+	if [ $? -ne 0 ]; then
+		fatal "Could not clone git repository: ${GIT_REPO}"
+	fi
+fi
 
 # configuring vim
-aptitude install vim
+sudo apt-get install -y vim
 create_link ~/.vim     ~/.dotfiles/.vim
 create_link ~/.vimrc   ~/.dotfiles/.vimrc
