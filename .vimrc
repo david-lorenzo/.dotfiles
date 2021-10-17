@@ -14,7 +14,7 @@ set smartindent
 set colorcolumn=80
 set hls
 
-call mkdir("~/.vim/tempfiles", "p")
+" call mkdir("~/.vim/tempfiles", "p")
 set directory=~/.vim/tempfiles//
 set undodir=~/.vim/tempfiles//
 set backupdir=~/.vim/tempfiles//
