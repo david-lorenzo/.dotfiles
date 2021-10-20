@@ -84,4 +84,5 @@ nnoremap <leader>k :cprev<CR>
 nnoremap <leader>K :cfirst<CR>
 nnoremap <leader>J :clast<CR>
 
-
+" A shortcut to open a buffer in a new tab without opening empty buffers
+cabbrev tb tab split \| b
