@@ -86,3 +86,12 @@ nnoremap <leader>J :clast<CR>
 
 " A shortcut to open a buffer in a new tab without opening empty buffers
 cabbrev tb tab split \| b
+
+" block mode from mouse
+set mouse=a
+noremap <M-LeftMouse> <4-LeftMouse>
+inoremap <M-LeftMouse> <4-LeftMouse>
+onoremap <M-LeftMouse> <C-C><4-LeftMouse>
+noremap <M-LeftDrag> <LeftDrag>
+inoremap <M-LeftDrag> <LeftDrag>
+onoremap <M-LeftDrag> <C-C><LeftDrag>
