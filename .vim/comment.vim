@@ -14,3 +14,8 @@ au FileType rust nnoremap <leader>cc :norm 0i// <CR>
 au FileType rust nnoremap <leader>uu :s,^// ,,<CR>
 au FileType rust vnoremap <leader>cc :norm 0i// <CR>
 au FileType rust vnoremap <leader>uu :s,^// ,,<CR>
+
+au FileType go nnoremap <leader>cc :norm 0i// <CR>
+au FileType go nnoremap <leader>uu :s,^// ,,<CR>
+au FileType go vnoremap <leader>cc :norm 0i// <CR>
+au FileType go vnoremap <leader>uu :s,^// ,,<CR>
