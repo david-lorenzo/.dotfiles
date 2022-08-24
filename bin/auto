@@ -1,0 +1,18 @@
+#!/bin/sh
+
+sourcef=$1
+
+FLAGS=""
+
+if [ -d $sourcef ]
+then
+	FLAGS="-r"
+fi
+
+
+while true;
+do
+	echo Watching ... $sourcef
+	inotifywait -q -e modify $FLAGS $sourcef
+	make
+done

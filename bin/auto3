@@ -1,0 +1,27 @@
+#!/bin/sh
+
+sourcef=$1
+shift
+
+FLAGS=""
+
+if [ -d $sourcef ]
+then
+	FLAGS="-r"
+fi
+
+
+while true;
+do
+	echo Watching ... $sourcef
+	inotifywait -q -e modify $FLAGS $sourcef
+	for x in "$@"
+	do
+		echo "executing: " $x
+		$x
+		if [ $? -ne 0 ]
+		then
+			break
+		fi
+	done
+done

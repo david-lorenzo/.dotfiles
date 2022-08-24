@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for f in $*
+do
+	(auto $f &) &
+done
