@@ -1,2 +1,6 @@
 ~/
 .mypy_cache/
+.vim/tempfiles
+.vim/.netrwhist
+bin/docker-compose
+bin/exercism
