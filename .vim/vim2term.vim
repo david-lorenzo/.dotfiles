@@ -1,6 +1,6 @@
 " Vim global plugin for sending visual selection blocks to an open
 " terminal inside vim
-" Last Change:  mar nov 24 21:33:09 CET 2020
+" Last Change: mié ago 24 22:11:20 CEST 2022
 " Maintainer: David Lorenzo
 " License: This file is placed in the public domain.
 
@@ -58,6 +58,11 @@ function s:SendBlock() range
 
   if before_after && exists("b:vim2term_epilogue") && b:vim2term_epilogue != ""
     call term_sendkeys(b:vim2term_buf, b:vim2term_epilogue . "\<CR>")
+  endif
+
+  " set the cursor below the last line of the visual block
+  if a:firstline != a:lastline
+    execute("normal '>j")
   endif
 endfunction
 
