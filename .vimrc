@@ -22,11 +22,13 @@ set backupdir=~/.vim/tempfiles//
 highlight EmptySpace ctermbg=green
 match EmptySpace /\s\+$/
 
-"let g:netrw_liststyle= 3 " tree view
-"let g:netrw_banner= 0 " disable banner
+" override default for: number and relativenumber
+let g:netrw_bufsettings="noma nomod nowrap ro nobl nu rnu"
 let g:netrw_browse_split= 4 " previous window
 let g:netrw_altv=1 " open to the right
 let g:netrw_preview=1 " open preview on vertical split
+"let g:netrw_banner= 0 " disable banner
+"let g:netrw_liststyle= 3 " tree view
 
 " disabling syntastic putting it in passive mode
 " syntastic is synchronous and it makes vim halt when saving a file
@@ -37,16 +39,23 @@ let g:syntastic_mode_map = {
 
 filetype plugin indent on
 
-autocmd FileType html setlocal sw=2 sts=2 ts=2 et
-autocmd FileType yaml setlocal sw=2 sts=2 ts=2 et
-autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
-autocmd FileType css setlocal sw=2 sts=2 ts=2 et
-autocmd FileType haskell setlocal sw=2 sts=2 ts=2 et
-autocmd FileType cabal setlocal sw=2 sts=2 ts=2 et
-autocmd FileType python setlocal sw=4 sts=4 ts=4 et
+augroup setTabWhiteSpace
+	au!
+	autocmd FileType html setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType yaml setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType css setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType haskell setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType cabal setlocal sw=2 sts=2 ts=2 et
+	autocmd FileType python setlocal sw=4 sts=4 ts=4 et
+augroup End
 
 " remove trailing white space
-autocmd BufWrite *.html,*.js,*.css,*.hs,*.py,*.rs,*.go :%s/\s\+$//e
+augroup removeTrailingSpace
+	au!
+	autocmd BufWrite *.html,*.js,*.css,*.hs,*.py,*.rs,*.go :%s/\s\+$//e
+augroup End
+
 
 let mapleader = "ñ"
 
@@ -110,6 +119,7 @@ augroup focus
 	au BufEnter * :hi StatusLine ctermbg=white ctermfg=blue
 	au BufLeave * :hi StatusLine ctermbg=black ctermfg=white
 augroup End
+
 
 "hi TabLineSel ctermbg=blue ctermfg=white
 

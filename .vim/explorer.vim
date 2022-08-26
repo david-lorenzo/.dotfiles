@@ -27,7 +27,6 @@ function s:ToggleLex()
 
 	if !flag
 		:Lexplore
-		:setl number relativenumber
 	endif
 endfunction
 
