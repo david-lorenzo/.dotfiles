@@ -27,6 +27,7 @@ let g:netrw_bufsettings="noma nomod nowrap ro nobl nu rnu"
 let g:netrw_browse_split= 4 " previous window
 let g:netrw_altv=1 " open to the right
 let g:netrw_preview=1 " open preview on vertical split
+let g:netrw_winsize=30 " default size
 "let g:netrw_banner= 0 " disable banner
 "let g:netrw_liststyle= 3 " tree view
 
