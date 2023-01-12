@@ -79,7 +79,7 @@ nnoremap <s-tab> <<
 "nnoremap <c-E> zl
 
 nmap <leader>f <Plug>ToggleLex
-nnoremap <leader>B :ls<CR>:b 
+nnoremap <leader>B :ls<CR>:b
 "nnoremap <leader>p :bp<CR>		"not used very often
 "nnoremap <leader>n :bn<CR>		"not used very often
 nnoremap <leader>w :up<CR>
@@ -136,8 +136,8 @@ nnoremap <C-Down>  <C-W>J
 nnoremap <C-Up>    <C-W>K
 nnoremap <C-Right> <C-W>L
 
-nnoremap <Left>  gT
-nnoremap <Right> gt
+" nnoremap <Left>  gT
+" nnoremap <Right> gt
 
 "nnoremap <Up>   :bp<CR>	" not liking it very much
 "nnoremap <Down> :bn<CR>	" not liking it very much
