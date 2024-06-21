@@ -65,6 +65,7 @@ source ~/.vim/vim2term.vim
 source ~/.vim/comment.vim
 "source ~/.vim/coding_autoclose.vim
 source ~/.vim/toggle_qf.vim
+source ~/.vim/yank_highlight.vim
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -75,6 +76,8 @@ vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+vnoremap p "_dp
+vnoremap P "_dP
 "nnoremap <c-Y> zh
 "nnoremap <c-E> zl
 
@@ -143,3 +146,4 @@ nnoremap <Right> gt
 "nnoremap <Down> :bn<CR>	" not liking it very much
 
 tnoremap <S-Insert> <C-W><C-N>"*pi
+"nmap <Esc> <cmd>nohls<cr>
