@@ -10,9 +10,10 @@ endif
 
 let g:loaded_vim2term = 1
 
-function s:SetParams(prologue, epilogue)
+function s:SetParams(prologue, epilogue, remove_spaces)
   let b:vim2term_prologue = a:prologue
   let b:vim2term_epilogue = a:epilogue
+  let b:vim2term_remove_spaces = a:remove_spaces
 endfunction
 
 function s:OpenTerm()
@@ -50,8 +51,21 @@ function s:SendBlock() range
     call term_sendkeys(b:vim2term_buf, b:vim2term_prologue . "\<CR>")
   endif
 
+  if b:vim2term_remove_spaces
+    let first_line = getline(a:firstline)
+    let spaces_to_remove = matchstrpos(first_line, "^[ ]*")
+  endif
+
   for i in range(a:firstline, a:lastline)
     let line_text = getline(i)
+	if match(line_text, "^\s*$") >= 0
+		continue
+	endif
+
+    if b:vim2term_remove_spaces
+      let line_text = substitute(line_text, spaces_to_remove[0], "", "")
+    endif
+
     call term_sendkeys(b:vim2term_buf, line_text . "\<CR>")
     call term_wait(b:vim2term_buf)
   endfor
@@ -87,5 +101,5 @@ map <Plug>Vim2termOpenTerm <SID>Openterm
 nmap <Leader>T <Plug>Vim2termOpenTerm
 
 
-autocmd FileType haskell call <SID>SetParams(":{", ":}")
-autocmd FileType python call <SID>SetParams("", "\<CR>")
+autocmd FileType haskell call <SID>SetParams(":{", ":}", 0)
+autocmd FileType python call <SID>SetParams("", "\<CR>", 1)
