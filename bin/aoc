@@ -1,0 +1,25 @@
+#!/usr/bin/sh -x
+
+cookie="Cookie: session=53616c7465645f5fb6c75aac33fd45546503a4e923e27490d63ddda883a9644fd969fbccc25f6fb3052a5511b10f09d43be59ae696fd54ebd38b9b1896990de4"
+
+if [ "$1" = "" ]
+then
+	year=`date +%Y`
+	day=`date +%d | sed 's/^0*//g'`
+else
+	year=$1
+	day=30
+fi
+
+
+for i in `seq 1 25`
+do
+	if [ $i -le $day ]
+	then
+		i_dd=`printf "%02d" $i`
+		if [ ! -e input${i_dd}.txt ]
+		then
+			curl -H "$cookie" https://adventofcode.com/${year}/day/${i}/input -o input${i_dd}.txt
+		fi
+	fi
+done
