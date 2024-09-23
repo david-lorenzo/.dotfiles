@@ -1,0 +1,9 @@
+[user]
+	email = david.lorenzo.nunez@gmail.com
+	name = david lorenzo
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[init]
+	defaultBranch = main
