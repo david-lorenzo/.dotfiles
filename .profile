@@ -26,10 +26,14 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -e /usr/local/go/bin ]; then
-	export PATH=/usr/local/go/bin:$PATH
-fi
+export PATH=/usr/local/go/bin:$PATH
 
-if [ -e "$HOME/.cargo/env ]; then
-	. "$HOME/.cargo/env"
-fi
+. "$HOME/.cargo/env"
+
+export LIBVA_DRIVER_NAME=i965
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_X11_EGL=1
+
+# from: https://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
+export VIEW=/home/david/local/vim/bin/view
+export MANPAGER="/bin/sh -c \"col -b | $VIEW -c 'set ft=man ts=8 nolist hidden' -\""
