@@ -30,3 +30,5 @@ alias cync='sudo systemctl stop davidsync.service'
 alias slow='sudo systemctl start cpumin.service'
 alias fast='sudo systemctl stop cpumin.service'
 alias start='sudo hdparm -y /dev/sda; df -h'
+
+#alias vim='gvim -v '

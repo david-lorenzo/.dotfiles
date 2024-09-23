@@ -102,4 +102,5 @@ nmap <Leader>T <Plug>Vim2termOpenTerm
 
 
 autocmd FileType haskell call <SID>SetParams(":{", ":}", 0)
+autocmd FileType bash call <SID>SetParams("", "", 0)
 autocmd FileType python call <SID>SetParams("", "\<CR>", 1)
